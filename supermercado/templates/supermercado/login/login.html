@@ -1,52 +1,42 @@
-{% extends ''supermercado/BASE.html %}
+{% extends 'supermercado/BASE.html' %}
 {% block titulo %}
-    AquilesBrinco.cl
+    login
 {% endblock titulo %}
 
 {% block cabeza %}
+ 
+<div class="container">
+    <header>
+        <h1> Inicio de Sesion  </h1>
+    </header>
+</div>
 
 {% endblock cabeza %}
 
+
+
 {% block cuerpo %}
 
-<section class="login-block">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 login-sec">
-        <h2 class="text-center">Ingreso de usuario</h2>
-        <form class="login-form">
+<div>
+    <form>
+      <div class="form-row">
+        <div class=" col-xs-12 col-md-6">
+           <input type="text" name="nombre" class="form-control" placeholder="Usuario">
+         </div>
+         <div class=" col-xs-12 col-md-6">
+           <input type="password" name="pass" class="form-control" placeholder="contraseña">
+         </div>
       </div>
-
-      <div class="form-group">
-        <label for="user" class="text-uppercase">Nombre de usuario</label>
-        <input type="text" class="form-control" id="user "placeholder="Usuario">
+       <div>
+            <button  type="button" class="btn btn-danger" >Iniciar</button>
       </div>
-
-      <div class="form-group">
-        <label for="pass" class="text-uppercase">Ingresa tu contraseña</label>
-        <input type="password" class="form-control" id="pass" placeholder="Contraseña">
-      </div>
-      
-      <div class="form-group"> 
-          <a href="">¿Eres nuevo? Registrate</a>
-      </div>
-      
-      <div class="form-check">
-        <a href="/Personas/templates/personas/home.html" class="btn btn-primary">Ingresar</a>
-      </div>
-    </div>
-
     </form>
-      <div class="col-md-8">
-        <img class="d-block img-fluid" src="https://www.mediapost.es/wp-content/uploads/mpg/2017/06/shutterstock_386814034-1280x839.jpg" alt="First slide">
-        <div class="carousel-caption d-none d-md-block">
-            <div class="banner-text">
-              <h2 style="color: black;">Supermercado Aquiles Brinco</h2>
-              <p style="color:black">Tus compras al alcance de los dedos</p>
-            </div>
-        </div>
-      </div>
-    </div>
-</section>  
+   </div>
+   <div>
+       <h3> Aun no tienes Cuenta..  </h3>
+   </div>
+   <div>
+    <a href="{% url 'User' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registrarte</a>
+   </div>
 
 {% endblock cuerpo %}

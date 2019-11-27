@@ -14,11 +14,18 @@ def traerGenero():
     generos = Genero.objects.all()
     return generos
 
+def traerComuna():
+    comuna = Comuna.objects.all()
+    return comuna
+
 def Inicio(request):
     return render(request,'supermercado/inicio/inicio.html')
 
 def Login(request):
-    return render(request,'supermercado/inicio/loginc.html')
+    return render(request,'supermercado/login/login.html')
+
+# def Agregar_prod(request):
+
 
 def Agregar(request):
     userf = UserForm()
@@ -48,7 +55,6 @@ def Agregar(request):
         'clienteform':cliente,
         'userform':userf
     }  
-
     return render(request,"supermercado/inicio/registar.html",
     context)
 
@@ -59,7 +65,7 @@ def buscar_pro(request,id):
             pro = ProductoForm(instance=producto)
             print(pro)
             
-            return render(request,'supermercado/inicio/busqueda.html',context={'producto':producto})
+            return render(request,'supermercado/inicio/busqueda.html',context={'producto':id})
         else:
             pro = ProductoForm(request.POST,instance = producto) 
             if pro.is_valid():

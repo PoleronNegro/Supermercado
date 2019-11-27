@@ -6,9 +6,13 @@ from django.contrib.auth.models import User
 class Genero(models.Model):
     tipo = models.CharField(max_length=15,null=False,blank=False)
 
+    def __str__(self):
+        return self.tipo
+
 class Region(models.Model):
     nombre_region = models.CharField(max_length=64,null=False,blank=False)
     num_regional = models.CharField(max_length=3,null=False,blank=False)
+
 
 class Provincia(models.Model):
     nombre_provincia = models.CharField(max_length=64,null=False,blank=False)
@@ -17,6 +21,9 @@ class Provincia(models.Model):
 class Comuna(models.Model):
     nombre_comuna = models.CharField(max_length=64,null=False,blank=False)
     provincia = models.ForeignKey(Provincia,on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.nombre_comuna,self.provincia
 
 class Persona(models.Model):
     run = models.CharField(primary_key=True,max_length=10,null=False,blank=False)
