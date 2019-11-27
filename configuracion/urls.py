@@ -21,4 +21,7 @@ from supermercado import views as vistaSupermercado
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vistaSupermercado.Inicio,name='Inicio'),
+    path('Login/', vistaSupermercado.Login,name='Login'),
+    path('User/', vistaSupermercado.Agregar,name='User'),
+    path('bus/<int:id>/',vistaSupermercado.buscar_pro,name='Bus')
 ]

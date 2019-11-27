@@ -1,15 +1,26 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Persona,Producto,Genero,Comuna
-from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm 
+from django.contrib.auth.forms import User
 
 def control(dato):
     for datos in dato:
-        datos[dato].widgtes.attrs['class']='form-control'
+        dato[datos].widget.attrs['class']='form-control'
 
 #creado por oscar(login)
 # class AuthenticationForm(ModelForm):
-    
+
+
+class UserForm(UserCreationForm):
+    def __init__(self,*args,**kargs):
+        super(UserForm,self).__init__(*args,**kargs)
+        control(self.fields)
+
+    class Meta:
+        model = User
+        fields = ['username','password1','password2']
+  
 
 class ClienteForm(ModelForm):
     def __init__(self,*args,**kargs):

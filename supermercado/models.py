@@ -36,6 +36,9 @@ class Producto(models.Model):
     stock = models.PositiveSmallIntegerField()
     precio = models.IntegerField()
 
+    # def __str__(self):
+    #     return "\{'nombre':{},'descripcion':{},'stock':{},'precio':{}\}".format(self.nombre,self.descripcion,self.stock,self.precio)
+
 class Boleta(models.Model):
     producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
     rut = models.ForeignKey(Persona,on_delete=models.CASCADE)

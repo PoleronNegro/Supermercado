@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from .forms import ClienteForm,ProductoForm
+from .forms import ClienteForm,ProductoForm,UserForm
 from .models import Persona,Producto,Genero,Comuna,Provincia,Region
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 #modificado por oscar
@@ -15,18 +15,20 @@ def traerGenero():
     return generos
 
 def Inicio(request):
-    return render(request,'supermercado/inicio.html')
+    return render(request,'supermercado/inicio/inicio.html')
 
-def Registro(request):
-    return HttpResponse('registro')
-
+def Login(request):
+    return render(request,'supermercado/inicio/loginc.html')
 
 def Agregar(request):
+    userf = UserForm()
     cliente = ClienteForm()
     if request.method == 'POST':
         #informacion Formulario
         newcliente = ClienteForm(request.POST)
-        if newcliente.is_valid():
+        newform = UserForm(data=request.POST)
+        if  newform.is_valid() and newcliente.is_valid():
+            value = newform.save()
             persona = Persona.objects.Create(
                 run = newcliente.cleaned_data.get('run'),
                 nombre = newcliente.cleaned_data.get('nombre'),
@@ -39,26 +41,34 @@ def Agregar(request):
                 tipo = newcliente.cleaned_data.get('tipo')
             )
             persona.save()
-
         else:
-            cliente = newcliente
-
+            cliente = newcliente(),
+            userf = newform()
     context = {
-        'clienteform':cliente
+        'clienteform':cliente,
+        'userform':userf
     }  
 
-    return render(request,#url la redireccion#,
+    return render(request,"supermercado/inicio/registar.html",
     context)
 
 def buscar_pro(request,id):
-    producto = Producto.objects.get(id=id)
-    if request.method == 'GET':
-        pro = ProductoForm(instance=producto)
-    else:
-        pro = ProductoForm(request.POST,instance = producto) 
-        if pro.is_valid():
-            pro.save()
-            return redirect('')   
+    try:
+        producto = Producto.objects.get(pk=id)
+        if request.method == 'GET':
+            pro = ProductoForm(instance=producto)
+            print(pro)
+            
+            return render(request,'supermercado/inicio/busqueda.html',context={'producto':producto})
+        else:
+            pro = ProductoForm(request.POST,instance = producto) 
+            if pro.is_valid():
+                pro.save()
+                return redirect('') 
+    except ObjectDoesNotExist:
+        print("hola")
+        return redirect('Inicio')
+      
 
 #karina
 # def AdministradorRegistro_view(request):

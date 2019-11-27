@@ -1,4 +1,4 @@
-{% extends ''supermercado/BASE.html %}
+{% extends 'supermercado/BASE.html' %}
 {% block titulo %}
     registrar
 {% endblock titulo %}
@@ -38,6 +38,12 @@ body{
   <form id="formulario" action="" method="POST" >
     {% csrf_token %}
     {% for datos in clienteform %}
+    <div class="form-group" id="contenido" >
+        <label for="{{ datos.id_for_label }} "> {{ datos.label }} </label>
+        {{ datos }}
+    </div>
+    {% endfor %}
+    {% for datos in userform %}
     <div class="form-group" id="contenido" >
         <label for="{{ datos.id_for_label }} "> {{ datos.label }} </label>
         {{ datos }}

@@ -1,4 +1,4 @@
-{% extends ''supermercado/BASE.html %}
+{% extends 'supermercado/BASE.html' %}
 {% block titulo %}
     login
 {% endblock titulo %}
@@ -36,7 +36,7 @@
        <h3> Aun no tienes Cuenta..  </h3>
    </div>
    <div>
-    <a href="registar.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registrarte</a>
+    <a href="{% url 'User' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registrarte</a>
    </div>
 
 {% endblock cuerpo %}
