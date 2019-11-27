@@ -1,4 +1,5 @@
 from django import forms
+<<<<<<< HEAD
 from django.forms import ModelForm
 from .models import Persona,Producto
 
@@ -38,3 +39,49 @@ class ProductoForm(ModelForm):
     class Meta:
         model = Producto
         fields = ['id_producto']    
+=======
+
+# creado por karina 
+from apss.administrador.models import administrador
+
+
+class  registroform (forms.modelsform)
+class Meta:
+    model = administrador
+
+    fields=[
+        'nombre',
+        'apellido',
+        'run',
+        'genero',
+        'correo_electronico',
+        'direccion',
+        'telefono',
+        'cuidad',
+        'comuda',
+        
+    ]
+
+    labels={
+        'nombre' : 'Nombre',
+        'apellido': 'Apellido',
+        'run': 'Run',
+        'genero':'Genero',
+        'correo_electronico':'Correo_electronico',
+        'direccion': 'Direccion',
+        'telefono': 'Telefono',
+        'ciudad': 'Cuidad'
+    }
+
+    widgtes= {
+        'nombre': forms.TextInput(attrs=('class': 'form-control')),
+        'apellido':forms.TextInput(attrs=('class': 'form-control')),,
+        'run':forms.TextInput(attrs=('class': 'form-control')),,
+        'genero':forms.checkboxselecmultiple(),
+        'correo_electronico':forms.TextInput(attrs=('class': 'form-control')),,
+        'direccion':forms.TextInput(attrs=('class': 'form-control')),,
+        'telefono':forms.TextInput(attrs=('class': 'form-control')),,
+        'cuidad':forms.TextInput(attrs=('class': 'form-control')),,
+
+    }
+>>>>>>> 6dda2107398ba729d43264004c2d539e954a05e3

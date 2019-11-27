@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import ClienteForm,ProductoForm
 from .models import Persona
+=======
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib import messages
+from apps.administrador.forms import registroform
+>>>>>>> 6dda2107398ba729d43264004c2d539e954a05e3
 
 # Create your views here.
 
@@ -10,6 +17,7 @@ def Inicio(request):
     return render(request,'supermercado/BASE.html')
 
 
+<<<<<<< HEAD
 def Agregar(request):
     cliente = ClienteForm()
     if request.method == 'POST':
@@ -38,3 +46,20 @@ def Agregar(request):
 
     return render(request,#url la redireccion#,
     context)
+=======
+
+#karina
+ 
+def AdministradorRegistro_view(request):
+    if request.method == 'POST':
+        form = registroform(request.POST)
+        if form.is_valid():
+            from.save()
+        return redirect('supermercado:Base.html')
+     else: registroform()
+
+     retun render(request,'supermercado/supermercado_form.html'), {'form': form})
+            
+
+
+>>>>>>> 6dda2107398ba729d43264004c2d539e954a05e3
