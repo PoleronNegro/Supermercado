@@ -54,12 +54,6 @@ def buscar_pro(request, producto_id):
             return redirect('')   
 
 
-
-
-
-
-
-
 #karina
  
 def AdministradorRegistro_view(request):
@@ -68,7 +62,7 @@ def AdministradorRegistro_view(request):
         if form.is_valid():
             from.save()
         return redirect('supermercado:Base.html')
-     else: registroform()
+    else: registroform()
 
      retun render(request,'supermercado/supermercado_form.html'), {'form': form})
             

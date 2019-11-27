@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Genero(models.Model):
-    datalle = models.CharField(max_length=15,null=False,blank=False)
+    tipo = models.CharField(max_length=15,null=False,blank=False)
 
 class Region(models.Model):
     nombre_region = models.CharField(max_length=64,null=False,blank=False)
@@ -27,6 +27,7 @@ class Persona(models.Model):
     comuna = models.ForeignKey(Comuna,on_delete=models.CASCADE)
     telefono = models.CharField(max_length=12,null=False,blank=False)
     tipo = models.CharField(max_length=20,null=False,blank=False)
+    puntos = models.IntegerField()
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=30,null=False,blank=False)
@@ -36,6 +37,7 @@ class Producto(models.Model):
 
 class Boleta(models.Model):
     producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
+    rut = models.ForeignKey(Persona,on_delete=models.CASCADE)
     cantidad = models.CharField(max_length=10,null=False,blank=False)
     fecha = models.DateTimeField(auto_now=True)
     total = models.PositiveIntegerField()
