@@ -6,7 +6,6 @@ from .models import Persona,Producto,Genero,Comuna,Provincia,Region
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from apps.administrador.forms import registroform
 
 # Create your views here.
 
@@ -17,6 +16,9 @@ def traerGenero():
 
 def Inicio(request):
     return render(request,'supermercado/inicio.html')
+
+def Registro(request):
+    return HttpResponse('registro')
 
 
 def Agregar(request):

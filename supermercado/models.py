@@ -18,7 +18,7 @@ class Comuna(models.Model):
     provincia = models.ForeignKey(Provincia,on_delete = models.CASCADE)
 
 class Persona(models.Model):
-    Run = models.CharField(primary_key=True,max_length=15,null=False,blank=False)
+    Run = models.CharField(primary_key=True,max_length=10,null=False,blank=False)
     nombre = models.CharField(max_length=25,null=False,blank=False)
     apellido = models.CharField(max_length=25,null=False,blank=False)
     genero = models.ForeignKey(Genero,on_delete=models.CASCADE)

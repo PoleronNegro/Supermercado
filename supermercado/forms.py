@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 # from apss.administrador.models import administrador
 
 #creado por oscar(login)
-class AuthenticationForm(ModelForm):
+# class AuthenticationForm(ModelForm):
     
 
 
@@ -54,11 +54,11 @@ def registrar(dato):
         datos[dato].widgtes.attrs['class']='form-control'
 
 class ClienteForm(ModelForm):
-    def __init__(self,*arg,**kargs):
+    def __init__(self,*args,**kargs):
         super(ClienteForm,self).__init__(*args,**kargs)
         registrar(self.fields)
 
-    run = forms.CharField(max_length=15,required=True,label='----------',help_text='no debe ser mayor a 15')
+    run = forms.CharField(max_length=10,required=True,label='----------',help_text='no debe ser mayor a 15')
     nombre = forms.CharField(max_length=20,required=True,label='Ingrese nombres',help_text='no puede ser mayor a 20')
     apellido = forms.CharField(max_length=20,required=True,label='Ingrese apellidos',help_text='no puede ser mayor a 20')
     genero = forms.ModelChoiceField(queryset = Genero.objects.all(),label='Seleccione su genero',required=True) 
@@ -68,15 +68,13 @@ class ClienteForm(ModelForm):
     telefono = forms.CharField(max_length=12,required=True,label='agrege su numero telefonico',help_text='no puede ser mayor a 12 caracteres')   
     tipo= forms.CharField(max_length=20,required=True,label='tipo',help_text='----')   
 
-
     class Meta:
         model = Persona
         fields = ['run','nombre','apellido','genero','correo','direccion','comuna','telefono','tipo']
 
 
-
 class ProductoForm(ModelForm):
-    def __init__(self,*arg,**kargs):
+    def __init__(self,*args,**kargs):
         super(ProductoForm,self).__init__(*args,**kargs)
         registrar(self.fields)
 
