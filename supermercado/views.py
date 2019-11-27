@@ -50,8 +50,8 @@ def Agregar(request):
     return render(request,#url la redireccion#,
     context)
 
-def buscar_pro(request, producto_id):
-    producto = Producto.objects.get(producto_id='producto_id')
+def buscar_pro(request,id):
+    producto = Producto.objects.get(id=id)
     if request.method == 'GET':
         pro = ProductoForm(instance=producto)
     else:

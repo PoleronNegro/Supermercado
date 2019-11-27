@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Comuna(models.Model):
     provincia = models.ForeignKey(Provincia,on_delete = models.CASCADE)
 
 class Persona(models.Model):
-    Run = models.CharField(primary_key=True,max_length=10,null=False,blank=False)
+    run = models.CharField(primary_key=True,max_length=10,null=False,blank=False)
     nombre = models.CharField(max_length=25,null=False,blank=False)
     apellido = models.CharField(max_length=25,null=False,blank=False)
     genero = models.ForeignKey(Genero,on_delete=models.CASCADE)
@@ -31,7 +32,7 @@ class Persona(models.Model):
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=30,null=False,blank=False)
-    descripcion = models.TextField(max_length=500,null=False,blank=False)
+    descripcion = models.TextField(max_length=256,null=False,blank=False)
     stock = models.PositiveSmallIntegerField()
     precio = models.IntegerField()
 
