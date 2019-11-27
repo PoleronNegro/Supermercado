@@ -1,8 +1,13 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Persona,Producto,Genero,Comuna
+from django.contrib.auth.forms import AuthenticationForm 
 # creado por karina 
 # from apss.administrador.models import administrador
+
+#creado por oscar(login)
+class AuthenticationForm(ModelForm):
+    
 
 
 # class registroform(forms.modelsform):
