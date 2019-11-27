@@ -1,0 +1,48 @@
+{% extends 'Base/supermercado.html'%}
+
+{% block  content %}
+
+<table class="table table-bordered"
+    <thead>
+       <tr>
+           <td>#</td>
+           <td>Nombre</td>
+           <td>Apellido</td>
+           <td>Run</td>
+           <td>Genero</td>
+           <td>Direccion</td>
+           <td>Telefono</td>
+           <td>comuna</td>
+           <td>cuidad</td>
+           <td>correo</td>
+         </tr>
+    </thead>  
+
+    <tbody>
+        {% if administrador %}
+        {% for administrador in administrador %}
+
+        <tr>
+              <td>{{ administrador.id}} </td>
+              <td>{{ administrador.Nombre}}</td>
+              <td>{{ administrador.Apellido}}</td>
+              <td>{{ administrador.Run}}</td>
+              <td>{{ administrador.Genero}}</td>
+              <td>{{ administrador.Direccion</td>
+              <td>{{ administrador.Telefono}}</td>
+              <td>{{ administrador.Comuna}}</td> 
+              <td>{{ administrador.Cuidad}}</td>
+              <td>{{ administrador.Correo}}</td>
+
+              <td>
+                  <a class= "btn btn-primary" href="% url 'Administrador:administrador_editar' Administrador.id %"> Editar </a>
+              </td>
+        </tr>
+
+      {% endfor %}  
+      {%else %}
+      <h1> No hay registro de  usuario</h1>
+      {% endif% }
+    </tbody>
+
+   </table>
