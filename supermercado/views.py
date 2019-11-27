@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import ClienteForm,ProductoForm
-from .models import Persona
+from .models import Persona,Producto
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -42,6 +42,23 @@ def Agregar(request):
 
     return render(request,#url la redireccion#,
     context)
+
+def buscar_pro(request, producto_id):
+    producto = Producto.objects.get(producto_id='producto_id')
+    if request.method == 'GET':
+        pro = ProductoForm(instance=producto)
+    else:
+        pro = ProductoForm(request.POST,instance = producto) 
+        if pro.is_valid():
+            pro.save()
+            return redirect('')   
+
+
+
+
+
+
+
 
 #karina
  
