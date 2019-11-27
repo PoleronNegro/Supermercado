@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import ClienteForm,ProductoForm
-from .models import Persona,Producto
+from .models import Persona,Producto,Genero,Comuna,Provincia,Region
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -10,8 +10,13 @@ from apps.administrador.forms import registroform
 
 # Create your views here.
 
+#modificado por oscar
+def traerGenero():
+    generos = Genero.objects.all()
+    return generos
+
 def Inicio(request):
-    return render(request,'supermercado/BASE.html')
+    return render(request,'supermercado/inicio.html')
 
 
 def Agregar(request):
@@ -53,18 +58,13 @@ def buscar_pro(request, producto_id):
             pro.save()
             return redirect('')   
 
-
 #karina
- 
-def AdministradorRegistro_view(request):
-    if request.method == 'POST':
-        form = registroform(request.POST)
-        if form.is_valid():
-            from.save()
-        return redirect('supermercado:Base.html')
-    else: registroform()
+# def AdministradorRegistro_view(request):
+    # if request.method == 'POST':
+    #     form = registroform(request.POST)
+    #     if form.is_valid():
+    #         from.save()
+    #     return redirect('supermercado:Base.html')
+    # else: registroform()
 
-     retun render(request,'supermercado/supermercado_form.html'), {'form': form})
-            
-
-
+    #  retun render(request,'supermercado/supermercado_form.html'), {'form': form})
