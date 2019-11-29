@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{%  block titulo %}    
+
+   administrador
+ {% endblock titulo%}  
+
+ {% block contenido%}
+
+    <div clas = 'row pr-3'>
+        {% if administrador %}
+            {% for administrador is administrador %}
+                <div class= 'col-md-12  col-lg-3   col-md-12'>
+                    <div class="card">
+                        <div class="card-header  justify-center">
+                            {{administrador.titulo}}
+                        </div>
+
+                        <div class = 'card-body'>
+                            <p class="card-text">
+                                {{administrador.descripcion}}
+                            </p>
+
+                            <div class="">
+                                <a class=" btn btn-success">
+                                    modificar
+                                </a>
+                                <a href=""   class="btn btn-eliminar">
+                                    eliminar
+                                </a>
+                            </div>
+                            
+                        
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+    </div>

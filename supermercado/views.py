@@ -97,6 +97,54 @@ def buscar_pro(request,id):
         return redirect('Inicio')
       
 
+def Agregaradministrador(request):
+    userf = UserForm()
+    administrador = administradorform()
+    if request.method == 'POST':
+
+        #informacion Formulario
+
+        newadministrador = administradorform(request.POST)
+        newform = UserForm(data=request.POST)
+        if  newform.is_valid() and newadministrador.is_valid():
+            value = newform.save()
+            persona = Persona.objects.Create(
+                nombre = newadministrador.cleaned_data.get('nombre'),
+                apellido = newadministrador.cleaned_data.get('apellido'),
+                run  = newadministrador.cleaned_data.get('run'),
+                genero = newadministrador.cleaned_data.get('genero'),
+                contraseña = newadministrador.cleaned_data.get('contraseña')
+                correo = newadministrador.cleaned_data.get('correo'),
+                direccion = newadministrador.cleaned_data.get('direccion'),
+                telefono = newadministrador.cleaned_data.get('telefono'),
+                cuidad = newadministrador.cleaned_data.get ('cuidad')
+                comuna  = newadministrador.cleaned_data.get('comuna')
+            )
+            persona.save()
+        else:
+            administrador = newadministrador(),
+            userf = newform()
+    context = {
+        'administradorform':administrador,
+        'userform':userf
+    }  
+    return render(request,"supermercado/inicio/registar.html",
+    context)
 
 
-    #  retun render(request,'supermercado/supermercado_form.html'), {'form': form})
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

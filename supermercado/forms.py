@@ -70,5 +70,28 @@ class agForm(ModelForm):
     class Meta:
         model = Producto
         fields =['nombre','descripcion','stock','precio']
+
+
+
+ class administradorform(ModelForm):
+    def __init__(self,*args,**kargs):
+        super(administradorform,self).__init__(*args,**kargs)
+        control(self.fields)
+
+    nombre = forms.CharField(max_length=20,required=True,label='Ingrese nombres',help_text='no puede ser mayor a 20')
+    apellido = forms.CharField(max_length=20,required=True,label='Ingrese apellidos',help_text='no puede ser mayor a 20')
+    run = forms.CharField(max_length=10,required=True,label='--run--',help_text='no debe ser mayor a 15')
+    genero = forms.ModelChoiceField(queryset = Genero.objects.all(),label='Seleccione su genero',required=True) 
+    contraseña =  forms.CharField(max_length=50,required=True,label='Ingrese contraseña',help_text=''))
+    correo  = forms.CharField(max_length=50,required=True,label='Ingrese correo',help_text='')
+    direccion  = forms.CharField(max_length=50,required=True,label='Ingrese direccion',help_text='------')
+    telefono = forms.CharField(max_length=12,required=True,label='agrege su numero telefonico',help_text='no puede ser mayor a 12 caracteres')   
+    comuna= forms.ModelChoiceField(queryset = Comuna.objects.all(),label='Seleccione su comuna',required=True)
+    cuidad =  forms.ModelChoiceField(queryset= cuidad.objects.all(), label ='selecione su cuidad', requided=True)
+
+    class Meta:
+        model = Persona
+        fields = ['nombre','apellido','run','genero','contraseña' ,'correo','direccion','telefono','comuna','cuidad']
+       
     
     
