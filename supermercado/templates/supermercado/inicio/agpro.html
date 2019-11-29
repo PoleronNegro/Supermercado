@@ -1,0 +1,27 @@
+{% extends 'supermercado/BASE.html' %}
+{% block titulo %}
+    productoo
+{% endblock titulo %}
+
+{% block cabeza %}
+
+
+{% endblock cabeza %}
+
+
+
+{% block cuerpo %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for datos in producto %}
+    <div class="form-group" id="contenido" >
+        <label for="{{ datos.id_for_label }} "> {{ datos.label }} </label>
+        {{ datos }}
+    </div>
+    {% endfor %}
+</form>
+
+
+{% endblock cuerpo %}
+

@@ -24,4 +24,5 @@ urlpatterns = [
     path('Login/', vistaSupermercado.Login,name='Login'),
     path('User/', vistaSupermercado.Agregar,name='User'),
     path('bus/<int:id>/',vistaSupermercado.buscar_pro,name='Bus'),
+    path('agproduc/',vistaSupermercado.Agregar_pro, name='agproduc')
 ]

@@ -10,12 +10,60 @@
 {% endblock cabeza %}
 
 {% block cuerpo %}
-  
-{{ producto.id }}
-{{ producto.nombre }}
-{{ producto.descripcion }}
-{{ producto.stock }}
-{{ producto.precio }}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 search" >
+        <form method="GET">
+            <table class="table table-danger" id="lista">
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>nombre</th>
+                        <th>descripcion</th>
+                        <th>stock</th>
+                        <th>precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{ producto.id }}</th>
+                        <th> {{ producto.nombre }}</th>
+                        <th>{{ producto.descripcion }}</th>
+                        <th> {{ producto.stock }}</th>
+                        <th>{{ producto.precio }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+  </div>
+</div>
+
 
 
 {% endblock cuerpo %}
+
+<div class="row esconder" id="listar">
+    <div class="col-sm-12">
+        <table class="table table-danger" id="lista">
+            <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>nombre</th>
+                    <th>descripcion</th>
+                    <th>stock</th>
+                    <th>precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ producto.id }}</th>
+                    <th> {{ producto.nombre }}</th>
+                    <th>{{ producto.descripcion }}</th>
+                    <th> {{ producto.stock }}</th>
+                    <th>{{ producto.precio }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

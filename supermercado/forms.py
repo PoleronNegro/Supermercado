@@ -27,7 +27,7 @@ class ClienteForm(ModelForm):
         super(ClienteForm,self).__init__(*args,**kargs)
         control(self.fields)
 
-    run = forms.CharField(max_length=10,required=True,label='----------',help_text='no debe ser mayor a 15')
+    run = forms.CharField(max_length=10,required=True,label='--run--',help_text='no debe ser mayor a 15')
     nombre = forms.CharField(max_length=20,required=True,label='Ingrese nombres',help_text='no puede ser mayor a 20')
     apellido = forms.CharField(max_length=20,required=True,label='Ingrese apellidos',help_text='no puede ser mayor a 20')
     genero = forms.ModelChoiceField(queryset = Genero.objects.all(),label='Seleccione su genero',required=True) 
@@ -47,9 +47,28 @@ class ProductoForm(ModelForm):
         super(ProductoForm,self).__init__(*args,**kargs)
         control(self.fields)
 
-    nombre = forms.CharField(max_length=35,required=True,label='----------',help_text='no debe ser mayor a 30')
+    nombre = forms.CharField(max_length=35,required=True,label='nombre producto',help_text='no debe ser mayor a 30')
 
 
     class Meta:
         model = Producto
-        fields =['nombre']
+        fields =['id', 'nombre']
+
+
+
+class agForm(ModelForm):
+    def __init__(self,*args,**kargs):
+        super(ProductoForm,self).__init__(*args,**kargs)
+        control(self.fields)
+    
+    
+    nombre = forms.CharField(max_length=35,required=True,label='nombre producto',help_text='no debe ser mayor a 30')
+    descripcion = forms.TextField(max_length=256,label='descripcion')
+    stock= PositiveSmallIntegerField()
+    precio = forms.IntegerField()
+
+    class Meta:
+        model = Producto
+        fields =['nombre','descripcion','stock','precio']
+    
+    

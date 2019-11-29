@@ -1,0 +1,29 @@
+{% extends 'supermercado/BASE.html' %}
+{% block titulo %}
+    supermercado
+{% endblock titulo %}
+
+{% block cabeza %}
+ 
+
+
+{% endblock cabeza %}
+
+{% block cuerpo %}
+
+<a class="btn btn-danger" href="{% url 'Bus' %}" onclick="traer()">Buscar</a>
+  
+
+
+<script>
+function traer(){
+  fetch("url 'Bus'")
+  .then (res => res.json())
+  .then (datos =>{
+      
+  })  
+}
+  
+  
+</script>
+{% endblock cuerpo %}

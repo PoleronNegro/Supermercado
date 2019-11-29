@@ -24,7 +24,7 @@ def Inicio(request):
 def Login(request):
     return render(request,'supermercado/login/login.html')
 
-# def Agregar_prod(request):
+
 
 
 def Agregar(request):
@@ -58,6 +58,28 @@ def Agregar(request):
     return render(request,"supermercado/inicio/registar.html",
     context)
 
+def Agregar_pro(request):
+    try:
+        prod = agForm()
+        if request.method == 'POST':
+            newpro = agForm(request.POST)
+            if newpro.is_valid():
+                value = newpro.save()
+                producto = Producto.objects.create(
+                    nombre = newpro.cleaned_data.get('nombre')
+                    descripcion= newpro.cleaned_data.get('descripcion')
+                    stock= newpro.cleaned_data.get('stock')
+                    precio = newpro.cleaned_data.get('precio')
+                )
+                producto.save()
+      context = {
+          'producto':prod
+      }
+
+    except ObjectDoesNotExist:
+        return redirect('Inicio')
+
+
 def buscar_pro(request,id):
     try:
         producto = Producto.objects.get(pk=id)
@@ -72,7 +94,6 @@ def buscar_pro(request,id):
                 pro.save()
                 return redirect('') 
     except ObjectDoesNotExist:
-        print("hola")
         return redirect('Inicio')
       
 
