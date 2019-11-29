@@ -1,0 +1,22 @@
+{% extends 'administrador/BASE.html'%}
+
+{% block titulo%}
+      administrador
+{% endblock titulo administrador%}     
+
+{% block contenido%}
+        <div class="row pr-3">
+            {% for administrador in administrador%}
+               <div class="col-md-4 col-lg-3">
+                   <div class="card-header justify-center">
+                     {{administrador.titulo}}
+                   </div>
+
+                   <div class="card-body">
+                       {{ administrador.descripcion}}
+                       <button class="btn btn-block btn-success">
+                           Detalles
+                       </button>
+                   </div>
+               </div>
+        </div>

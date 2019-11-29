@@ -3,6 +3,8 @@ from django.forms import ModelForm
 from .models import Persona,Producto,Genero,Comuna
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm 
 from django.contrib.auth.forms import User
+from .models import administrador
+from .forms import administradorform
 
 def control(dato):
     for datos in dato:

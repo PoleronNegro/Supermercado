@@ -24,6 +24,12 @@ def Inicio(request):
 def Login(request):
     return render(request,'supermercado/login/login.html')
 
+def index(request):
+    administrador =administrador.objects.all()
+    context ={
+        'supermercado/administrador.index.html'
+    }    
+
 
 
 
