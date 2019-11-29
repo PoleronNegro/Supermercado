@@ -131,8 +131,53 @@ def Agregaradministrador(request):
     return render(request,"supermercado/inicio/registar.html",
     context)
 
+# modificar administrador
+def modificaradministrador(request,idadministrador):
+    try:
+        administradorencontrado  = administrador.objects.get(pk=idadministrador)  
+        form = administradorform(instance= administradorencontrado)
+        if request.method =='POST':
+            newform = administradorform(request.POST,instance=form)
+            if  newform.is_valid ()  and newform.has.change():
+                newform.save()
+                messages.success(request,'usuario modificado correctamente!')
+                return redirect ('inicioadministrador')
+              else 
 
-    
+         context={  
+             'form':newform
+         }
+         return render(request,'administrador/modificar.html', context)
+      except  ObjectDoesNotExist:
+          messages.warning(request,'usuario no existe')
+          return  redirect('inicioadministrador')
+         return render(request, 'administrador/modificar.html')  
+
+ # eliminar administrador 
+
+def eliminaradministrador(request,idadministrador):
+    try:
+        administradoreliminar = administrador.objects.get(pk=idadministrador)
+        administradoreliminar.delete()
+        messages.success(request,'usuario eliminado correctamente!')
+        return redirect ('inicioadministrador')
+     except ObjectDoesNotExist:
+          messages.warning(request,'el usuario no existe')  
+          return  redirect ('inicioadministrador')  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
