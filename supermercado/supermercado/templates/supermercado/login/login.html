@@ -1,0 +1,42 @@
+{% extends 'supermercado/BASE.html' %}
+{% block titulo %}
+    login
+{% endblock titulo %}
+
+{% block cabeza %}
+ 
+<div class="container">
+    <header>
+        <h1> Inicio de Sesion  </h1>
+    </header>
+</div>
+
+{% endblock cabeza %}
+
+
+
+{% block cuerpo %}
+
+<div>
+    <form>
+      <div class="form-row">
+        <div class=" col-xs-12 col-md-6">
+           <input type="text" name="nombre" class="form-control" placeholder="Usuario">
+         </div>
+         <div class=" col-xs-12 col-md-6">
+           <input type="password" name="pass" class="form-control" placeholder="contraseña">
+         </div>
+      </div>
+       <div>
+            <button  type="button" class="btn btn-danger" >Iniciar</button>
+      </div>
+    </form>
+   </div>
+   <div>
+       <h3> Aun no tienes Cuenta..  </h3>
+   </div>
+   <div>
+    <a href="{% url 'User' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registrarte</a>
+   </div>
+
+{% endblock cuerpo %}

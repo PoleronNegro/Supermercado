@@ -1,0 +1,112 @@
+<!-- creado por matias general -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-cl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/supermercado/css/vista_vendedor.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button boton="agregar" onclick="desplegar(this)" class="btn btn-outline-dark">Agregar producto</button>
+            <button boton="modificar" onclick="desplegar(this)" class="btn btn-outline-dark">Modificar producto/Estado del producto</button>
+            <!-- <button boton="eliminar" onclick="desplegar(this)" class="btn btn-outline-danger">Eliminar producto</button> -->
+            <button boton="listar" onclick="desplegar(this)" class="btn btn-outline-dark">Listar productos</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row esconder" id="agregar">
+            <div class="col-sm-12">
+                <br>
+                <h1 class="h5 text-center">Agregar Producto</h1>
+                <form action="" onsubmit="agregarProducto(event,this)">
+                    <div class="form-group">
+                        <label for="">Nombre del producto *</label>
+                        <input required name="nombre" type="text" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">$</span>
+                        </div>
+                        <input name="precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Ingrese el precio del producto">
+                      </div>
+                      <br>
+                      <div class="form-group">
+                            <label for="">Stock de productos</label>
+                            <input name="stock" type="number" class="form-control" min="1" max="50">
+                        </div>
+                        <div class="radio">
+                            <label for="">Estado del producto</label>
+                            <br>
+                                <label><input type="radio" name="optradio" value="Activo" checked> Activo</label>
+                              </div>
+                              <div class="radio">
+                                <label><input type="radio" name="optradio" value="Inactivo"> Inactivo</label>
+                              </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="comment">Descripción del producto:</label>
+                            <textarea name="descripcion" class="form-control" rows="5" id="comment"></textarea>
+                          </div>
+                    <button class="btn btn-success">Agregar producto</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row esconder" id="modificar">
+            <div class="col-sm-12">
+                <h1 class="h5 text-center" >Modificar producto/Estado del producto</h1>
+                <form action="" onsubmit="modificar(event,this)">
+                    <div class="form-group">
+                        <label for="">Ingrese el producto a modificar</label>
+                        <input type="text" name="nombreModificar" class="form-control">
+                    </div>
+                    <button class="btn btn-info">Buscar producto</button>
+                </form>
+            </div>
+        </div>
+        <div class="row esconder" id="eliminar">
+            <div class="col-sm-12">
+                <h1 class="h5 text-center">Eliminar producto</h1>
+                <form action="" onsubmit="EliminarObjeto(event,this)">
+                    <div class="form-group">
+                        <label for="">Ingrese el producto a eliminar</label>
+                        <input type="text" name="nombreaEliminar" class="form-control">
+                    </div>
+                    <button class="btn btn-danger">Eliminar Producto</button>
+                </form>
+            </div>
+        </div>
+        <div class="row esconder" id="listar">
+            <div class="col-sm-12">
+                <table class="table table-dark" id="TablaUsuarios">
+                    <thead>
+                        <tr>
+                            <th>Nombre del producto</th>
+                            <th>Precio del producto</th>
+                            <th>Stock del producto</th>
+                            <th>Estado del producto</th>
+                            <th>Acciones</th>
+                            <!-- <th>Descripción del producto <button class="btn btn-danger">Eliminar</button> <button class="btn btn-warning">Modificar</button></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <button type="button" class="btn btn-outline-primary">Salir</button> -->
+        <a href="login.html" class="btn btn-outline-primary">Salir</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{% static 'supermercado/js/vista_vendedor.js' %}"></script>
+</body>
+</html>

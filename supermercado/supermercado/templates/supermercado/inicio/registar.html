@@ -1,0 +1,62 @@
+{% extends 'supermercado/BASE.html' %}
+{% block titulo %}
+    registrar
+{% endblock titulo %}
+
+{% block cabeza %}
+ 
+
+
+{% endblock cabeza %}
+
+<body>
+  <div id="head" class="container-center col-xs-12 col-md-12">
+      <header>
+           Ingrese Datos
+      </header>
+  </div>
+
+{% block cuerpo %}
+
+<style>
+   
+body{
+    background-color: ivory;
+}
+#head{
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+#formulario{
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+</style>
+<div>
+  <form id="formulario" action="" method="POST" >
+    {% csrf_token %}
+    {% for datos in clienteform %}
+    <div class="form-group" id="contenido" >
+        <label for="{{ datos.id_for_label }} "> {{ datos.label }} </label>
+        {{ datos }}
+    </div>
+    {% endfor %}
+    {% for datos in userform %}
+    <div class="form-group" id="contenido" >
+        <label for="{{ datos.id_for_label }} "> {{ datos.label }} </label>
+        {{ datos }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Registrar"  class="btn btn-danger btn-block" >
+</form>
+</div>
+<script>
+   console.log('funcionando')
+    
+</script>
+
+
+
+{% endblock cuerpo %}
